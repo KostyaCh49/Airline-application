@@ -1,0 +1,12 @@
+org\example\transport\mapper\UserMapperImpl.class
+org\example\model\User.class
+org\example\transport\mapper\UserMapper.class
+org\example\controller\UserController.class
+org\example\service\UserServiceImpl.class
+org\example\transport\dto\UserDTO.class
+org\example\repository\UserRepository.class
+org\example\model\Ticket.class
+org\example\Main.class
+org\example\model\Flight.class
+org\example\transport\dto\UserDTO$UserDTOBuilder.class
+org\example\service\UserService.class

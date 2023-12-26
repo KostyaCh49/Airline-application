@@ -3,6 +3,9 @@ package org.example.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -21,6 +24,6 @@ public class User {
     @Column(name = "password", nullable = false, unique = true)
     private String password;
 
-    @Column(name = "ticket_id")
-    private Long ticketId;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Ticket> ticket = new ArrayList<>();
 }

@@ -2,6 +2,8 @@ package org.example.service;
 
 import org.example.model.User;
 import org.example.repository.UserRepository;
+import org.example.transport.dto.UserDTO;
+import org.example.transport.mapper.UserMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,9 +11,11 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
+    private final UserMapper userMapper;
 
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper) {
         this.userRepository = userRepository;
+        this.userMapper = userMapper;
     }
 
     @Override
@@ -25,8 +29,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> getAll() {
-        return userRepository.findAll();
+    public List<UserDTO> getAll() {
+        return userRepository.findAll().stream()
+                .map(userMapper::entityToDto)
+                .toList();
     }
 
     @Override
@@ -35,7 +41,6 @@ public class UserServiceImpl implements UserService {
 
         user.setUsername(incomingUser.getUsername());
         user.setPassword(incomingUser.getPassword());
-        user.setTicketId(incomingUser.getTicketId());
 
         return userRepository.save(user);
     }
