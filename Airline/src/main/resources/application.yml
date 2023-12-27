@@ -6,6 +6,8 @@ spring:
     url: jdbc:postgresql://localhost:5432/airline
     username: postgres
     password: admin
+  liquibase:
+    change-log: db.changelog/db.changelog-master.yaml
 
   jpa:
     open-in-view: false

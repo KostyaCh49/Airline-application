@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -29,4 +30,7 @@ public class Flight {
 
     @Column(name = "arrival_time", nullable = false)
     private Timestamp arrivalTime;
+
+    @OneToMany(mappedBy = "flight", cascade = CascadeType.ALL)
+    private List<Ticket> ticket = new ArrayList<>();
 }

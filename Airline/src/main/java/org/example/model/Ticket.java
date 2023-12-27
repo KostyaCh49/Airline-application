@@ -3,8 +3,6 @@ package org.example.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
-
 @Entity
 @Getter
 @Setter
@@ -17,8 +15,9 @@ public class Ticket {
     @Column(name = "ticket_id")
     private Long ticketId;
 
-    @Column(name = "flight_id")
-    private Long flightId;
+    @ManyToOne
+    @JoinColumn(name = "flight_id", referencedColumnName = "flight_id")
+    private Flight flight;
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
