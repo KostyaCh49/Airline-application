@@ -6,6 +6,7 @@ import org.example.transport.dto.UserDTO;
 import java.util.List;
 
 public interface UserService {
+    void severalDatabaseChanges();
     void create(User user);
     User getById(Long userId);
     List<UserDTO> getAll();

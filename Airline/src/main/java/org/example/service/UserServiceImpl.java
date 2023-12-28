@@ -23,6 +23,29 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
+    public void severalDatabaseChanges() {
+        try {
+            User user1 = new User();
+            user1.setUsername("Mike");
+            user1.setPassword("2187431p");
+            create(user1);
+
+            User user2 = new User();
+            user2.setUsername("Glory");
+            user2.setPassword(null);
+            create(user2);
+
+            User user3 = new User();
+            user3.setUsername(null);
+            user3.setPassword("274865gr");
+            create(user3);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     @Transactional(isolation = Isolation.READ_UNCOMMITTED)
     public void create(User user) {
         userRepository.save(user);
