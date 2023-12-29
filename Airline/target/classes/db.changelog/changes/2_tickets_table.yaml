@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: Kostya Chapchai
+      changes:
+        - createSequence:
+            sequenceName: tickets_id_seq
+            startValue: 1
+            incrementBy: 1
+        - createTable:
+            tableName: tickets
+            columns:
+              - column:
+                  name: ticket_id
+                  type: bigint
+                  defaultValueComputed: nextval('tickets_id_seq')
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: flight_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false

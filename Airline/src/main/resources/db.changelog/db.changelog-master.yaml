@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - include:
+      - file: classpath:db.changelog/changes/1_initial_schema.yaml
+
+  - include:
+      - file: classpath:db.changelog/changes/2_tickets_table.yaml
+
+  - include:
+      - file: classpath:db.changelog/changes/3_flights_table.yaml

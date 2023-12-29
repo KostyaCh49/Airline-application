@@ -1,0 +1,38 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author: Kostya Chapchai
+      changes:
+        - createSequence:
+            sequenceName: flights_id_seq
+            startValue: 1
+            incrementBy: 1
+        - createTable:
+            tableName: flights
+            columns:
+              - column:
+                  name: flight_id
+                  type: bigint
+                  defaultValueComputed: nextval('flights_id_seq')
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: departure_point
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: arrival_point
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: departure_time
+                  type: timestamp
+                  constraints:
+                    nullable: false
+              - column:
+                  name: arrival_time
+                  type: timestamp
+                  constraints:
+                    nullable: false

@@ -14,11 +14,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/transactional")
-    public void severalDatabaseChanges() {
-        userService.severalDatabaseChanges();
-    }
-
     @PostMapping("/create")
     public void create(@RequestBody User user) {
         userService.create(user);
@@ -42,5 +37,10 @@ public class UserController {
     @DeleteMapping("/delete/{userId}")
     public void delete(@PathVariable Long userId) {
         userService.delete(userId);
+    }
+
+    @PostMapping("/transactional")
+    public void severalDatabaseChanges() {
+        userService.severalDatabaseChanges();
     }
 }

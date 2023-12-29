@@ -2,6 +2,9 @@ server:
   port: 8080
 
 spring:
+  liquibase:
+    change-log: db.changelog/db.changelog-master.yaml
+    enabled: true
   datasource:
     url: jdbc:postgresql://localhost:5432/airline
     username: postgres
